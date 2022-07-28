@@ -1,3 +1,7 @@
-pytest
-mypy
-flake8
+#test tool
+pytest==7.1.2 #https://github.com/pytest-dev/pytest
+
+mypy==0.971 #https://github.com/python/mypy
+
+#linting tool
+flake8==4.0.1 #https://github.com/PyCQA/flake8

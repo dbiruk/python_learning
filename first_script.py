@@ -3,7 +3,7 @@ import numpy as np
 from argparse import ArgumentParser
 
 
-def parabolaEquation():
+def parabola_equation():
     x: int = range(-50, 50)
     y: int = [x*x for x in x]
     str = 'y=x^2'
@@ -18,7 +18,7 @@ def parabolaEquation():
     return str
 
 
-def slopeEquation():
+def slope_equation():
     x: int = np.linspace(-5, 5, 100)
     y: int = 2*x+1
     str = 'y=2x+1'
@@ -33,17 +33,15 @@ def slopeEquation():
     return str
 
 
-def graphBuilder(graph, x):
-    if (graph == 'y=2x+1'):
-        x: int = x
+def graph_builder(graph, x: int):
+    if (graph == 'slope'):
         y = 2*x+1
         print("The answer is:", y)
-        slopeEquation()
-    elif graph == 'y=x^2':
-        x: int = x
+        slope_equation()
+    elif graph == 'parabola':
         y = x*x
         print("The answer is:", y)
-        parabolaEquation()
+        parabola_equation()
     else:
         print("Such graphic does not exist yet")
     return graph
@@ -63,7 +61,6 @@ def parse_args():
     )
     parser.add_argument(
         '-x',
-        '--x_value',
         required=False,
         type=int,
         help='The x value to calculate the equation'
@@ -71,13 +68,9 @@ def parse_args():
     return parser.parse_args()
 
 
-def test_graphBuilder():
-    assert parabolaEquation() == 'y=x^2'
-
-
 if __name__ == '__main__':
     args = parse_args()
     graph = args.graph
     x = args.x_value
 
-    graphBuilder(graph, x)
+    graph_builder(graph, x)
