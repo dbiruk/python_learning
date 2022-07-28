@@ -71,6 +71,6 @@ def parse_args():
 if __name__ == '__main__':
     args = parse_args()
     graph = args.graph
-    x = args.x_value
+    x = args.x
 
     graph_builder(graph, x)
