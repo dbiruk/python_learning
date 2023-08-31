@@ -1,0 +1,13 @@
+1. Python ecosystem learning to get knew knowledge and skills:
+    * virtual environment managing (venv, virtualenv, Pipenv)
+    * packages and library dependencies management (pip, poetry etc)
+    * python linting tools and rules configuration (flake8, black, isort etc).
+    Delivery Results: Github repository with all necessary pre-configured rules/configs (including .pre-commit hooks) and best practises to be able to start python project fast from scratch.
+
+2. Python type annotations learning to get knew knowledge and skills:
+    * type annotations
+    * mypy (configuration + static code analysis)
+    Delivery Results: GitHub project repository (from Customer or Personal one) with python code that uses type annotations.
+    
+3. Start learning writing unit tests in python using PyTest (or other frameworks)
+    Delivery Results: GitHub project repository (from Customer or Personal one) which contains test written in Python.
