@@ -7,9 +7,12 @@ operators = { "+": operator.add,
         '/' : operator.truediv, }
 
 def calculate (num1, num2, oper):
-    if oper == '/' and num1 == 0 and num2 != 1:
+    cil = calc_util.check_if_letters(num1, num2) 
+    if cil == False: stupid_input()
+    if oper == '/' and float(num2) == 0:
         print("You can't divide by 0 moron")
-        stupid_input()
+        stupid_input()   
+    
     res = calc_util.check_if_int(operators[oper](float(num1),float(num2)))
     print("The reuslt is: " + str(res))
 
@@ -23,18 +26,21 @@ def single_input():
     calculate(strip_vals[0], strip_vals[1], strip_vals[2])
 
 def multiple_inputs():
-    num1 = float(input("The First Number:"))
+    num1 = input("The First Number:")
     oper = input("Operator:")
-    num2 = float(input("The Second Number:"))
+    num2 = input("The Second Number:")
     calculate(num1, num2, oper)
 
 def stupid_input():
-    stupid = input("=====================\n"+
+    maybe_stupid = input("=====================\n"+
         "Are you stoopid? Do you want to try again(y/n): ")
-    if stupid == 'y':
+    if maybe_stupid == 'y':
         input_choice()
-    else:
+    elif maybe_stupid =='n':
         exit()
+    else:
+        stupid_input()
+
 
 def input_choice():
     choice = (input("Do you want to input one by one, or in a single line? \n"+
@@ -46,6 +52,6 @@ def input_choice():
         single_input()
     else:
         stupid_input()
-        
+
 
 input_choice()
