@@ -11,8 +11,9 @@ def calculate (num1, num2, oper):
     print("The reuslt is: " + str(res))
 
 def quality_checks(num1, num2, oper):
-    cil = calc_util.check_if_letters(num1, num2) 
-    if cil == False: return False
+    if calc_util.check_if_letters(num1, num2) == False or oper not in operators: 
+        print("Please learn how to input correctly")
+        return False
     if oper == '/' and float(num2) == 0:
         print("You can't divide by 0 moron")
         return False
