@@ -12,7 +12,7 @@ def calculate (num1, num2, oper):
 
 def quality_checks(num1, num2, oper):
     if calc_util.check_if_letters(num1, num2) == False or oper not in operators: 
-        print("Please learn how to input correctly")
+        print("Please learn how to input")
         return False
     if oper == '/' and float(num2) == 0:
         print("You can't divide by 0 moron")
@@ -60,7 +60,7 @@ def input_choice():
 
 def main():
     vals = input_choice()
-    if quality_checks(vals[0], vals[1], vals[2]) == False:
+    while quality_checks(vals[0], vals[1], vals[2]) == False:
         vals = stupid_input()
     calculate(vals[0], vals[1], vals[2])
     
