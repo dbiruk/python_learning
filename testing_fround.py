@@ -24,11 +24,3 @@
 
 #print(xo_dict["DawnFM"])
 
-from curses.ascii import isdigit
-
-
-def check_letters(num1, num2):
-    if not num1.isdigit() or not num2.isdigit():
-        print('Can\'t have letters in numbers')
-
-check_letters('21', 'ads')

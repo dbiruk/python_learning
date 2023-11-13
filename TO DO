@@ -4,6 +4,13 @@ TO DO
 
 # single ipunt
  # divide the string into 2 numbers and an operator DONE!
- # check if something a letter is present (shouldn't be there for now)
+ # check if something a letter is present (shouldn't be there for now) DONE!
+
+# Check that the correct operator was input DONE!
 
 # Continue operations with the resulting value - how tf do i do this???
+
+# Add operations with parentheses - skull emoji  
+
+
+if we find an operator in the list of strings, we change that whole elemnt to the operator

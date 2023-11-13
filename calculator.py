@@ -1,17 +1,21 @@
 import operator
-import calc_util
+import re 
+
+from calc_util import Calc_Util
 
 operators = { "+": operator.add, 
         "-": operator.sub,
         '*' : operator.mul,
         '/' : operator.truediv, }
 
-def calculate (num1, num2, oper):
-    res = calc_util.check_if_int(operators[oper](float(num1),float(num2)))
-    print("The reuslt is: " + str(res))
+def calculate (num1, oper, num2):
+    res = Calc_Util.check_if_int(operators[oper](float(num1),float(num2)))
+    string_result = f"The reuslt is: {res}"
+    print(string_result)
+    return res
 
-def quality_checks(num1, num2, oper):
-    if calc_util.check_if_letters(num1, num2) == False or oper not in operators: 
+def quality_checks(num1, oper, num2):
+    if Calc_Util.check_if_letters(num1, num2) == False or oper not in operators: 
         print("Please learn how to input")
         return False
     if oper == '/' and float(num2) == 0:
@@ -28,11 +32,30 @@ def single_input():
 
     return vals
 
+def super_single_input(res =''):
+    if res != '':
+        one_input = (input(f"{res}"))
+    else:
+        one_input = (input("Input the operation: "))
+    Calc_Util.check_quit(one_input)
+    splitted = re.split('([-]?\d+\.\d+)|([-]?\d+)|[a-z]+', one_input, flags=re.IGNORECASE)  #working one
+    splitted.insert(0, str(res))
+    
+    #splitted = re.split('([-]?\d+\.\d+)|[a-z]+', one_input, flags=re.IGNORECASE)
+    filtered_list = list(filter(lambda item: item is not None, splitted))
+    a = 0
+    for x in filtered_list:
+        filtered_list[a] = Calc_Util.remove_spaces(x)
+        a +=1
+    while("" in filtered_list):
+        filtered_list.remove("")
+    return filtered_list
+
 def multiple_inputs():
     num1 = input("The First Number:")
     oper = input("Operator:")
     num2 = input("The Second Number:")
-    vals = [num1, num2, oper]
+    vals = [num1, oper, num2]
 
     return vals
 
@@ -53,16 +76,29 @@ def input_choice():
     if choice == "one":
         return multiple_inputs()
     elif choice == "single":
-        return single_input()
+        return super_single_input()
     else:
         stupid_input()
+
+def continious_calcuation(vals,res):
+    while quality_checks(vals[0], vals[1], vals[2]) == False:
+        vals = stupid_input()
+    res = calculate(vals[0], vals[1], vals[2])
+    return res
 
 
 def main():
     vals = input_choice()
+    res = ' '
     while quality_checks(vals[0], vals[1], vals[2]) == False:
-        vals = stupid_input()
-    calculate(vals[0], vals[1], vals[2])
+            vals = stupid_input()
+    res = calculate(vals[0], vals[1], vals[2])
+    while res != '':
+        while quality_checks(vals[0], vals[1], vals[2]) == False:
+            vals = stupid_input()
+        new_input = super_single_input(res)
+        res = continious_calcuation(new_input,res)
+   
     
 
 if __name__ == '__main__':
